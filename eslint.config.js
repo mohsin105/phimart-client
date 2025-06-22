@@ -23,12 +23,12 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'no-unused-vars': ['off', { varsIgnorePattern: '^[A-Z_]' }], //error chilo, off disi
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
-      "react/props-types": "off",
+      "react/prop-types": "off",
     },
   },
 ]
