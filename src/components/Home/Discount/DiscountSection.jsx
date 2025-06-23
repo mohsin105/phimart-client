@@ -1,6 +1,6 @@
 
-import bgImg from "../../assets/images/banner-image-bg-1.jpg"
-import bannerImg from "../../assets/images/banner-image3.png"
+import bgImg from "../../../assets/images/banner-image-bg-1.jpg"
+import bannerImg from "../../../assets/images/banner-image3.png"
 const DiscountSection = () => {
     return (
         <section className=" h-[600px] w-full flex justify-center items-center bg-cover bg-center px-4 md:px-8 py-8"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const NavBar = () => {
     return (
@@ -20,7 +20,7 @@ const NavBar = () => {
                         <li><a>Submenu 2</a></li>
                     </ul>
                     </li>
-                    <li><a>Item 3</a></li>
+                    <li><Link to="/shop">Shop</Link></li>
                 </ul>
                 </div>
                 <a className="btn btn-ghost text-xl">daisyUI</a>
@@ -37,7 +37,7 @@ const NavBar = () => {
                     </ul>
                     </details>
                 </li>
-                <li><a>Item 3</a></li>
+                <li><Link to="/shop">Shop</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
