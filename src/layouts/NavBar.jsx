@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router';
+import useAuthContext from '../hooks/useAuthContext';
 
 const NavBar = () => {
+    const {user,logOutUser} = useAuthContext();
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
@@ -78,7 +80,7 @@ const NavBar = () => {
                             </a>
                             </li>
                             <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
+                            <li><a onClick={logOutUser}>Logout</a></li>
                         </ul>
                     </div>
                 </div>
