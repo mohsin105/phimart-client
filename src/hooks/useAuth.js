@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
+import { FaLeaf } from "react-icons/fa";
 
 const useAuth = () => {
     const [user,setUser] =useState(null);
@@ -60,13 +61,49 @@ const useAuth = () => {
 
         }
     };
+
+
     const logOutUser=()=>{
         setUser(null);
         setAuthToken(null);
         localStorage.removeItem("authToken");
     }
 
-    return {user,loginUser,errorMessage,registerUser,logOutUser};
+    const updateUserProfile=async(userData)=>{
+        setErrorMessage('');
+        try {
+            await apiClient.put("auth/users/me/",userData,{
+                headers:{Authorization:`JWT ${authToken?.access}`}
+            })
+        } catch (error) {
+            console.log(error);
+            handleApiError(error);
+        }
+    };
+
+    const changePassword=async(userData)=>{
+        setErrorMessage("");
+        try {
+            await apiClient.post("auth/users/reset_password/",userData,{
+                headers:{Authorization:`JWT ${authToken?.access}`}
+            })
+        } catch (error) {
+            console.log(error);
+            handleApiError(error);
+        }
+    }
+
+    const handleApiError=(error, defaultMessage="Something went wrong is the server end")=>{
+        if(error.response && error.response.data)
+        {
+            const apiErrorMessage=Object.values(error.response.data).flat().join('\n');
+            setErrorMessage(apiErrorMessage);
+        }
+        setErrorMessage(defaultMessage);
+        return {success:false, message:defaultMessage};
+    }
+
+    return {user,loginUser,errorMessage,registerUser,logOutUser,updateUserProfile,changePassword};
 };
 
 export default useAuth;

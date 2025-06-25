@@ -9,6 +9,7 @@ import PrivateRoute from '../components/PrivateRoute';
 import Dashboard from '../pages/Dashboard';
 import DashboardLayout from '../layouts/DashboardLayout';
 import Register from '../pages/Register';
+import Profile from '../pages/Profile';
 
 const AppRoutes = () => {
     return (
@@ -19,13 +20,14 @@ const AppRoutes = () => {
                 <Route path="shop" element={<Shop/>}/>
                 <Route path="login" element={<Login/>}/>
                 <Route path="register" element={<Register/>}/>
-                <Route path='dashboard' element={
+            </Route>
+            <Route path='dashboard' element={
                     <PrivateRoute>
                         <DashboardLayout/>
                     </PrivateRoute>
                 }>
                     <Route index element={<Dashboard/>}/>
-                </Route>
+                    <Route path="profile" element={<Profile/>}/>
             </Route>
         </Routes>
     );
