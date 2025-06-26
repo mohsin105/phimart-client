@@ -10,6 +10,8 @@ import Dashboard from '../pages/Dashboard';
 import DashboardLayout from '../layouts/DashboardLayout';
 import Register from '../pages/Register';
 import Profile from '../pages/Profile';
+import ProductDetails from '../pages/ProductDetails';
+import Cart from '../pages/Cart';
 
 const AppRoutes = () => {
     return (
@@ -18,6 +20,7 @@ const AppRoutes = () => {
                 <Route path="/" element={<Home/>}/>
                 <Route path="about" element={<About/>}/>
                 <Route path="shop" element={<Shop/>}/>
+                <Route path="shop/:id" element={<ProductDetails/>}/>
                 <Route path="login" element={<Login/>}/>
                 <Route path="register" element={<Register/>}/>
             </Route>
@@ -28,6 +31,7 @@ const AppRoutes = () => {
                 }>
                     <Route index element={<Dashboard/>}/>
                     <Route path="profile" element={<Profile/>}/>
+                    <Route path="cart" element={<Cart/>}/>
             </Route>
         </Routes>
     );
