@@ -6,6 +6,8 @@ import useCartContext from '../hooks/useCartContext';
 const NavBar = () => {
     const {user,logOutUser} = useAuthContext();
     const {cart} = useCartContext();
+    // console.log("User From Navbar: ",user);
+    // console.log('Cart from NavBar: ',cart);
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">

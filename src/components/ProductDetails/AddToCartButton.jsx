@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaMinus, FaPlus, FaShoppingCart } from 'react-icons/fa';
+import { FaCheck, FaMinus, FaPlus, FaShoppingCart } from 'react-icons/fa';
 import useCartContext from '../../hooks/useCartContext';
 
 const AddToCartButton = ({product}) => {
@@ -47,7 +47,26 @@ const AddToCartButton = ({product}) => {
                     disabled={quantity>=product.stock}><FaPlus/></button>
             </div>
             <div>
-                <button onClick={addToCart}><span><FaShoppingCart/>Add To Cart</span></button>
+                <button 
+                    className="btn btn-primary w-full"
+                    onClick={addToCart}>
+                    {isAdding? (
+                        <span className="flex items-center">
+                            <span className="loading loading-spinner loading-sm mr-2"></span>
+                            Adding...
+                        </span>
+                    ) : isAdded? (
+                        <span className="flex items-center">
+                            <FaCheck className="mr-2 h-4 w-4" />
+                            Added to Cart
+                        </span>
+                    ): (
+                        <span className="flex items-center">
+                            <FaShoppingCart className="mr-2 h-4 w-4"/>
+                            Add To Cart
+                        </span>
+                    )}
+                </button>
             </div>
         </div>
     );

@@ -35,9 +35,11 @@ const useAuth = () => {
             console.log(response.data);
             setAuthToken(response.data);
             localStorage.setItem("authToken",JSON.stringify(response.data)); 
-            console.log("Auth token and localStorage e authToken set hobar kotha")  
+            console.log("Auth token state and localStorage e authToken set hobar kotha")  
+            
+            //Again fetching user after new loggin in. 
+            await fetchCurrentUser();
             return{success:true};
-
         } catch (error) {
             setErrorMessage(error.response.data?.detail);
             return{success:false}
@@ -67,6 +69,7 @@ const useAuth = () => {
         setUser(null);
         setAuthToken(null);
         localStorage.removeItem("authToken");
+        localStorage.removeItem('cartId');
     }
 
     const updateUserProfile=async(userData)=>{

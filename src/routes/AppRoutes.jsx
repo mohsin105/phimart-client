@@ -12,6 +12,7 @@ import Register from '../pages/Register';
 import Profile from '../pages/Profile';
 import ProductDetails from '../pages/ProductDetails';
 import Cart from '../pages/Cart';
+import Orders from '../pages/Orders';
 
 const AppRoutes = () => {
     return (
@@ -32,6 +33,7 @@ const AppRoutes = () => {
                     <Route index element={<Dashboard/>}/>
                     <Route path="profile" element={<Profile/>}/>
                     <Route path="cart" element={<Cart/>}/>
+                    <Route path="orders" element={<Orders/>}/>
             </Route>
         </Routes>
     );

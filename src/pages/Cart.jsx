@@ -4,7 +4,7 @@ import CartItemList from '../components/Cart/CartItemList';
 import CartSummary from '../components/Cart/CartSummary';
 
 const Cart = () => {
-    const {cart,isLoading,createOrGetCart,updateCartItemQuantity,deleteCartItem}= useCartContext();
+    const {cart,cartId,isLoading,createOrGetCart,updateCartItemQuantity,deleteCartItem}= useCartContext();
     const [localCart,setLocalCart] =useState(cart);
 
     
@@ -85,7 +85,8 @@ const Cart = () => {
                 </Suspense>
                 <CartSummary 
                     itemCount={localCart.items.length}
-                    totalPrice={localCart.gross_total_price}/>
+                    totalPrice={localCart.gross_total_price}
+                    cartId={cartId}/>
             </div>
         </div>
     );

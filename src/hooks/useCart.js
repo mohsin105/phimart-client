@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import authApiClient from "../services/auth-api-client";
 
@@ -15,16 +15,17 @@ const useCart = () => {
     const [cartId,setCartId] =useState(()=>localStorage.getItem('cartId'));
     const [isLoading,setIsLoading] =useState(false);
 
-    
+    // console.log("hello sdfgjuweogf");
     const createOrGetCart=useCallback(
         async()=>{
             setIsLoading(true);
+            // console.log("Create or get card function ");
             try {
-                const response= await authApiClient.post('/carts/')
+                const response= await authApiClient.post('/carts/');
                 // const response=await apiClient.post('/carts/',{
                 //     headers:{Authorization:`JWT ${authToken?.access}`}
                 // })
-                console.log(response.data);
+                // console.log("Response from cart api:",response.data);
                 if(!cartId)
                 {
                     localStorage.setItem('cartId',response.data.id);
@@ -80,7 +81,7 @@ const useCart = () => {
         }
         ,[cartId]);
     
-    useCallback(()=>{
+    useEffect(()=>{
         const initializeCart=async()=>{
             setIsLoading(true);
             await createOrGetCart();

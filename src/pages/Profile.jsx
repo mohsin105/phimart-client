@@ -41,9 +41,17 @@ const Profile = () => {
             console.log(error);
         }
     };
+    console.log(user);
     return (
         <div className='card w-full max-w-2xl mx-auto bg-base-100 shadow-xl'>
             
+            {user.is_staff &&(
+                <p>This user is staff</p>
+            )}
+            {!user.is_staff &&(
+                <p>This user is not a staff</p>
+            )}
+
             <div className='card-body'>
                 {errorMessage && (
                     <ErrorAlert error={errorMessage}/>
